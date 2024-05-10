@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    #sliderContainer {
+      width: 600px; 
+      margin: 0 auto;
+    }
+
+    #mainImageContainer {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #mainImage {
+      max-width: 100%;
+    }
+
+    .thumbnail {
+      width: 80px; 
+      height: auto;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="sliderContainer">
+    <div id="mainImageContainer">
+      <img id="mainImage" src="offline classes.jpg" alt="Main Image">
+    </div>
+    <div id="thumbnailContainer">
+      
+
+    </div>
+  </div>
+
+  <script>
+    
+    const images = ["ballet dance.jpg", "hip-hop-dance.jpg", "contemporary dance.jpg", "tap dance.jpg"];
+
+  
+    function createThumbnails() {
+      const thumbnailContainer = document.getElementById("thumbnailContainer");
+      thumbnailContainer.innerHTML = ""; 
+
+      images.forEach((image, index) => {
+        const thumbnail = document.createElement("img");
+        thumbnail.src = image;
+        thumbnail.alt = `Thumbnail ${index + 1}`;
+        thumbnail.classList.add("thumbnail");
+        thumbnail.addEventListener("click", () => {
+          displayImage(index);
+        });
+        thumbnailContainer.appendChild(thumbnail);
+      });
+    }
+
+    
+    function displayImage(index) {
+      const mainImage = document.getElementById("mainImage");
+      mainImage.src = images[index];
+    }
+
+    
+    createThumbnails();
+  </script>
+</body>
+</html>
